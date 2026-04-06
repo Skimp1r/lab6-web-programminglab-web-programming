@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Lab6 Text Analyzer",
+  "version": "1.0.0",
+  "description": "Анализ курсовых работ по алгоритму шинглов.",
+  "action": {
+    "default_title": "Lab6 Analyzer",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "https://vk.com/*",
+    "https://*.vk.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://vk.com/*", "https://*.vk.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
